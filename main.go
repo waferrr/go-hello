@@ -11,14 +11,17 @@ import (
 
 func main() {
 
+	// 加载配置文件
+	cfg, err := LoadConfig("config")
+	if err != nil {
+		log.Fatalf("加载配置失败: %v", err)
+	}
+
 	//创建服务
 	ginServer := gin.Default()
 
-	// 构造 DSN（数据源名称）
-	dsn := "root:123456@tcp(47.236.236.227:3306)/testdb?charset=utf8mb4&parseTime=True&loc=Local"
-
-	// 连接数据库
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	// 初始化数据库连接
+	db, err := gorm.Open(mysql.Open(cfg.DSN()), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("连接数据库失败: %v", err)
 	}
@@ -40,6 +43,5 @@ func main() {
 		})
 	})
 
-	ginServer.Run(":8080")
-
+	ginServer.Run(cfg.Server.Port)
 }
