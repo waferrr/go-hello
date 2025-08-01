@@ -4,6 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"laiwh/hello/cook/meat"
+	"laiwh/hello/cook/vagetable"
 	"laiwh/hello/model"
 	"log"
 	"net/http"
@@ -41,6 +43,8 @@ func main() {
 		context.JSON(200, gin.H{
 			"message": "Hello World",
 		})
+		meat.MakeDish("牛排")
+		vagetable.MakeDis("土豆丝")
 	})
 
 	ginServer.Run(cfg.Server.Port)
