@@ -2,11 +2,11 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/waferrr/go-hello/cook/meat"
+	"github.com/waferrr/go-hello/cook/vagetable"
+	"github.com/waferrr/go-hello/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"laiwh/hello/cook/meat"
-	"laiwh/hello/cook/vagetable"
-	"laiwh/hello/model"
 	"log"
 	"net/http"
 )

@@ -1,4 +1,4 @@
-module laiwh/hello
+module github.com/waferrr/go-hello
 
 go 1.24.3
 
